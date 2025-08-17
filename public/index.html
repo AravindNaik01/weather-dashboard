@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Live Weather Dashboard</title>
-
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
   <body>
     <header>
@@ -17,38 +17,72 @@
           <section id="search-section">
             <h2>Search for a City:</h2>
             <form id="search-form">
-              <input
-                type="text"
-                id="search-input"
-                placeholder="e.g., New York"
-              />
+              <div class="search-input-container">
+                <i class="fas fa-search search-icon"></i>
+                <input
+                  type="text"
+                  id="search-input"
+                  placeholder="e.g., New York"
+                  autocomplete="off"
+                />
+              </div>
               <button type="submit">Search</button>
             </form>
           </section>
 
-          <!-- NEW: History Section -->
           <section id="history-section">
-            <h2>Search History</h2>
-            <!-- The history buttons will be dynamically added here by our script -->
+            <div class="history-header">
+              <h2>Search History</h2>
+              <button id="clear-history" class="clear-history-btn">Clear</button>
+            </div>
             <div id="history-container"></div>
           </section>
         </aside>
 
         <div class="weather-display">
-          <!--  Loader Element -->
           <div id="loader" class="loader hidden">Loading...</div>
-          <div
-            id="error-container"
-            class="error-message hidden"
-            aria-live="polite"
-          ></div>
+          <div id="error-container" class="error-message hidden" aria-live="polite"></div>
 
           <section id="current-weather" class="current-weather-section">
-            <h2 id="city-name-date">City Name (Date)</h2>
+            <div class="current-weather-header">
+              <div>
+                <h2 id="city-name-date">City Name</h2>
+                <p id="current-date" class="current-date">--</p>
+              </div>
+              <img id="weather-icon" src="" alt="Weather icon" class="weather-icon">
+            </div>
             <div class="weather-data">
-              <p id="temperature">Temperature: --</p>
-              <p id="humidity">Humidity: --</p>
-              <p id="wind-speed">Wind Speed: --</p>
+              <div class="weather-data-item">
+                <i class="fas fa-temperature-half weather-icon"></i>
+                <div>
+                  <span class="weather-data-label">Temperature</span>
+                  <span id="temperature" class="weather-data-value">--</span>
+                  <span class="weather-data-unit">°C</span>
+                </div>
+              </div>
+              <div class="weather-data-item">
+                <i class="fas fa-droplet weather-icon"></i>
+                <div>
+                  <span class="weather-data-label">Humidity</span>
+                  <span id="humidity" class="weather-data-value">--</span>
+                  <span class="weather-data-unit">%</span>
+                </div>
+              </div>
+              <div class="weather-data-item">
+                <i class="fas fa-wind weather-icon"></i>
+                <div>
+                  <span class="weather-data-label">Wind Speed</span>
+                  <span id="wind-speed" class="weather-data-value">--</span>
+                  <span class="weather-data-unit">km/h</span>
+                </div>
+              </div>
+              <div class="weather-data-item">
+                <i class="fas fa-cloud weather-icon"></i>
+                <div>
+                  <span class="weather-data-label">Conditions</span>
+                  <span id="weather-conditions" class="weather-data-value">--</span>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -58,13 +92,6 @@
           </section>
         </div>
       </div>
-
-      <!-- <section class="search-section">
-        <form id="search-form">
-          <input id="search-input" type="text" placeholder="Enter a city name" />
-          <button  type="submit">Search</button>
-        </form>
-      </section> -->
     </main>
 
     <script src="script.js"></script>
