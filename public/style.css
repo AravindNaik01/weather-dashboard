@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+p,
+form {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5; /* A good default for readability */
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:root {
+  /* Color Palette */
+  --color-primary-dark: #2c3e50; /* A dark, slate blue for headers/accents */
+  --color-primary-light: #3498db; /* A bright, clear blue for buttons/links */
+  --color-bg-main: #ecf0f1; /* A very light grey for the main page background */
+  --color-bg-card: #ffffff; /* Plain white for content cards/sections */
+  --color-text-dark: #34495e; /* A dark, soft grey for primary text, easier on the eyes than pure black */
+  --color-text-light: #ffffff; /* Pure white for text on dark backgrounds */
+  --color-border: #bdc3c7; /* A subtle grey for borders */
+
+  /* Font Families */
+  --font-family-main: "Poppins", sans-serif;
+
+  /* Spacing & Borders */
+  --spacing-unit: 1rem;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+}
+
+body {
+  font-family: var(--font-family-main); /* Apply our Poppins font */
+  background-color: var(--color-bg-main); /* Set the main background color */
+  color: var(--color-text-dark); /* Set the default text color */
+  line-height: 1.5;
+}
+header {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-light);
+  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+  text-align: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: calc(var(--spacing-unit) * 2);
+  padding: calc(var(--spacing-unit) * 2);
+  max-width: 1200px;
+  margin-inline: auto;
+}
+.search-section input {
+  width: 100%;
+  padding: var(--spacing-unit);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search-section input:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+}
+
+.search-section button {
+  width: 100%;
+  display: block;
+  margin-top: var(--spacing-unit);
+  padding: var(--spacing-unit);
+  background-color: var(--color-primary-light);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.search-section button:hover {
+  /* Use our darker primary color to make the button darken slightly on hover */
+  background-color: var(--color-primary-dark);
+}
+
+.current-weather-section {
+  background-color: var(--color-bg-card);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  padding: calc(var(--spacing-unit) * 2);
+}
+
+.current-weather-section h2 {
+  font-size: 2.5rem; /* 1rem is typically 16px, so this is ~40px */
+  font-weight: 700;
+  margin-bottom: var(--spacing-unit);
+}
+.current-weather-section p:last-child {
+  margin-bottom: 0;
+}
+
+.forecast-section h2 {
+  font-size: 1.5rem; /* ~24px */
+  font-weight: 700;
+  margin-bottom: var(--spacing-unit);
+}
+.forecast-cards-container {
+  display: flex;
+  gap: var(--spacing-unit);
+}
+
+.forecast-card {
+  /* 
+    3. flex: 1; is a powerful shorthand. It tells each card to grow and take up an
+       equal amount of the available space within the flex container. This ensures
+       all 5 cards neatly fill the width of the main content area.
+  */
+  flex: 1;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-unit);
+  text-align: center;
+}
+
+.forecast-card h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.forecast-card .weather-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0.5rem auto; /* Center the icon horizontally */
+  background-color: #eee; /* A temporary placeholder color */
+}
+
+.forecast-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
+}
+
+.loader {
+  font-size: 1.5rem; /* Make the text a bit larger */
+  font-weight: bold; /* Make it stand out */
+  color: #555;      /* A slightly soft black color */
+  text-align: center; /* Center the text */
+  padding: 2rem 0;  /* Add some space above and below it */
+}
+.error-message {
+  color: #d32f2f; /* A standard error color (dark red) */
+  background-color: #ffebee; /* A light red background for contrast */
+  border: 1px solid #d32f2f; /* A border in the same error color */
+  border-radius: 4px; /* Slightly rounded corners */
+  padding: 1rem;      /* Generous padding for readability */
+  margin-bottom: 1rem; /* Space between the error and the content below */
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.main-layout {
+  display: flex;
+  flex-wrap: wrap; /* Allows stacking on smaller screens */
+  gap: 2rem;
+}
+
+.sidebar {
+  flex: 1; /* Takes up some space */
+  min-width: 250px; /* Ensures it doesn't get too squished */
+}
+.weather-display {
+  flex: 3; /* Takes up more space */
+}
+
+#history-section h2 {
+  margin-top: 1.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+#history-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 0.5rem; /* Space between buttons */
+  margin-top: 1rem;
+}
+
+/* Style for each dynamically created history button */
+.history-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.history-btn:hover {
+  background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 768px) {
+   html {
+    font-size: 15px; /* Default is 16px, so this is a small reduction. */
+  }
+ .main-layout {
+    gap: 1.5rem;
+  }
+  /* For example: We might adjust padding or font sizes here in the next step. */
+}
+
+
+@media screen and (max-width: 600px) {
+  .main-layout {
+    flex-direction: column;
+    gap: 2rem; /* We can even increase the gap now that they are stacked. */
+  }
+    html {
+    font-size: 14px;
+  }
+    header h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  body {
+    padding: 1rem;
+  }
+ #forecast-container {
+    flex-direction: column;
+    /* We can also align the cards to the center of the container now that they are stacked. */
+    align-items: center; 
+    /* The `gap` property will now add vertical space between the stacked cards. */
+    gap: 1rem;
+  }
+  /* For example: We will change the flex-direction of our main layout here. */
+}
+
+#search-form button {
+  /* ... your existing styles: padding, background-color, border, etc. ... */
+  cursor: pointer;
+  /* NEW: Add this line */
+  transition: background-color 0.2s ease-in-out;
+}
+
+#search-form button:hover {
+  background-color: #0056b3; /* Your existing hover color */
+}
+
+.history-btn {
+  /* ... your existing styles: width, padding, background-color, etc. ... */
+  cursor: pointer;
+  /* NEW: Add this line */
+  transition: background-color 0.2s ease-in-out;
+}
+
+.history-btn:hover {
+  background-color: #e0e0e0; /* Your existing hover color */
+}
+
+.loader, .error-message {
+  /* ... your existing styles: font-size, color, padding, etc. ... */
+  
+  /* NEW: Define the default visible state and the transition */
+  opacity: 1; /* By default, when not hidden, it's fully visible. */
+  transition: opacity 0.4s ease-in-out; /* Animate the opacity property */
+}
+
+/* Find and completely REPLACE your old .hidden rule with this one. */
+.hidden {
+  /* Instead of display: none, we make it fully transparent and non-interactive. */
+  opacity: 0;
+  visibility: hidden;
+  /* This prevents the invisible element from being clickable. */
+  pointer-events: none;
+}
